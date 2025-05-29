@@ -1,6 +1,4 @@
 // index.js
-// where your node app starts
-
 // init project
 var express = require('express');
 var app = express();
@@ -18,12 +16,14 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// where your node app starts
+var apiRoutes = require('./myApp');
+app.use(apiRoutes);
 
 
 // Listen on port set in environment variable or default to 3000
